@@ -46,6 +46,11 @@ The notebooks contain reusable SQL queries that generate insights such as:
 - **Business Value**: Delivers insights that aid **marketing, sales, and operations** decisions.  
 
 ---
+## Lucid diagram
+Link- https://lucid.app/lucidchart/6073154e-6e5c-4c8e-a5c6-c3f707e35dc2/edit?invitationId=inv_f538057c-9f08-4f0d-8f8a-d7584f6fa4cf&page=0_0#
+
+<img width="1536" height="1024" alt="dataBase-modeling" src="https://github.com/user-attachments/assets/c1b0613e-3b0c-4a46-97c7-daea525e88c6" />
+
 
 ## 🖼️ **Visual ERD (Entity-Relationship Diagram)**
 
@@ -55,3 +60,4 @@ erDiagram
     ORDERS ||--o{ ORDER_ITEMS : contains
     PRODUCTS ||--o{ ORDER_ITEMS : listed_in
     PRODUCTS }o--|| CATEGORIES : classified_into
+
