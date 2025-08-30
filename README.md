@@ -1,66 +1,57 @@
-#📊 E-Commerce Analytics on Databricks
+# 📊 **E-Commerce Analytics on Databricks**
 
-This project demonstrates how to model and analyze an E-Commerce Platform using Databricks Delta Tables.
-The system is designed to capture real-world workflows, where:
+This project showcases how to model and analyze an **E-Commerce Platform** using **Databricks Delta Tables**.  
+The workflow is inspired by real-world online shopping systems where:  
+- **Customers** place **Orders**  
+- **Orders** contain multiple **Products**  
+- **Products** belong to specific **Categories**  
+- Orders progress through statuses like **Placed → Shipped → Delivered**
 
-Customers place orders.
+---
 
-Each order can contain multiple products.
+## 🏗️ **Data Model**
 
-Products belong to categories.
+The database is structured into multiple tables under the **Datax schema**:
 
-Orders go through statuses such as Placed → Shipped → Delivered.
+- **Customers** → Stores customer details (profile, contact, city).  
+- **Products** → Contains product information with assigned categories.  
+- **Categories** → Groups products into categories for easy classification.  
+- **Orders** → Tracks purchase history and order statuses.  
+- **Order_Items** → Records line-level details of products purchased per order.  
 
-#🏗️ Data Model
+**Relationships:**  
+- A **Customer** can place many **Orders**  
+- Each **Order** can have multiple **Order_Items**  
+- An **Order_Item** always refers to a **Product**  
+- A **Product** belongs to one **Category**
 
-The data is organized into relational tables under the Datax schema:
+---
 
-Customers → Stores customer information (profile, contact, location).
+## 📌 **Key Business Insights**
 
-Products → Catalog of products with details and assigned categories.
+The notebooks contain reusable SQL queries that generate insights such as:  
 
-Categories → Classification of products into meaningful groups.
+1. **Top 5 Customers by Spending** → Identify your most valuable buyers.  
+2. **Most Sold Product** → Find which product has the highest demand.  
+3. **Pending Deliveries** → Track orders still awaiting shipment or delivery.  
+4. **Revenue by Month** → Analyze sales trends and seasonal growth.  
 
-Orders → Tracks customer purchases and their statuses.
+---
 
-Order_Items → Line-level details of products purchased in each order.
+## 🚀 **Why This Project?**
 
-Relationships:
+- **Hands-On Learning**: Builds a real-world e-commerce workflow.  
+- **Reusability**: Queries are modular and can be extended easily.  
+- **Scalability**: Structured to fit into a **Bronze → Silver → Gold** pipeline.  
+- **Business Value**: Delivers insights that aid **marketing, sales, and operations** decisions.  
 
-A Customer can place many Orders.
+---
 
-Each Order can have multiple Order_Items.
+## 🖼️ **Visual ERD (Entity-Relationship Diagram)**
 
-An Order_Item always points to a Product.
-
-A Product belongs to one Category.
-
-#📌 Key Insights
-
-The SQL queries provided inside the notebooks generate valuable business insights, including:
-
-Top 5 Customers by Total Spending
-
-Identifies the most valuable customers based on purchase amounts.
-
-Most Sold Product by Quantity
-
-Finds the product with the highest sales volume.
-
-Pending Deliveries
-
-Lists orders that are still in “Placed” or “Shipped” status.
-
-Revenue Trend by Month
-
-Tracks revenue growth and seasonality across months.
-
-#🚀 Why This Project?
-
-Hands-On Practice: Simulates real-world e-commerce scenarios.
-
-Reusability: Queries are written to be modular and extensible.
-
-Scalability: Designed to grow into a Bronze → Silver → Gold pipeline.
-
-Business Value: Provides insights useful for decision making in marketing, sales, and operations.
+```mermaid
+erDiagram
+    CUSTOMERS ||--o{ ORDERS : places
+    ORDERS ||--o{ ORDER_ITEMS : contains
+    PRODUCTS ||--o{ ORDER_ITEMS : listed_in
+    PRODUCTS }o--|| CATEGORIES : classified_into
